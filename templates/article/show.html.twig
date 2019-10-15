@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Création d'un article{% endblock %} 
+
+
+
+{% block body %}
+</div>
+<center><a href="{{path('article_create')}}" class="btn btn-danger">Ajouter l'article</a></center></td>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Libelle</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for article in articles %}
+    <tr class="table-secondary" id="block_{{article.id}}">
+        <td> {{article.id}}</td>
+        <td> {{article.libelle}}</td>
+        <td> {{article.prix}}</td>
+        <td> {{article.description}}</td>
+        <td> {{article.image}}</td>
+        <td> <center><a href="{{path('article_edit', {'id' :article.id})}}" class="btn btn-danger">Modifier l'article</a></center></td>
+        <td> <center><a href="{{path('article_delete', {'id' : article.id})}}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer l'article : {{article.libelle}} ?')">Supprimer une annonce</a></td>
+    </tr>
+ {% endfor %}
+
+{% endblock body %}

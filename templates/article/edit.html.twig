@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un article{% endblock %} 
+
+{% form_theme form _self %} 
+
+{% block body %}
+
+<div class="container">
+    <h1>Modifier un nouveau article </h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}<!--afficher le champ lui meme sans titre-->
+    
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Etes vous sur de vouloir modifier l'article ?')">Modifier l'article</button>
+        <a href="{{path('articles_admin')}}" class="btn btn-danger">Annuler la modification</a>
+
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock body %}
